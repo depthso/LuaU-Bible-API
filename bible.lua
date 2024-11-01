@@ -61,7 +61,7 @@ type translations = {
 	[number]: translation
 }
 
-function Bible:Fetch(Url): string
+function Bible:Fetch(Url: string): string
 	return HttpService:GetAsync(Url, false)
 end
 
@@ -72,7 +72,7 @@ local function JsonGet(Url: string): SharedTable
 	return Json
 end
 
-function Bible:SetTranslation(NewTranslation: Translation)
+function Bible:SetTranslation(NewTranslation: translation)
 	self.Translation = NewTranslation
 end
 
@@ -107,9 +107,6 @@ function Bible:GetChapter<Default>(BookId, ChapterNum, TranslationId: Translatio
 end
 
 function Bible:GetVerses<Default>(BookId, ChapterNum, TranslationId: TranslationId?): verses
-	local ChapterNum = ChapterNum or 1
-	local Translation = TranslationId or self.Translation
-	
 	local Chapter = self:GetChapter(BookId, ChapterNum, TranslationId)
 	local Verses = Chapter.content
 	
@@ -117,7 +114,7 @@ function Bible:GetVerses<Default>(BookId, ChapterNum, TranslationId: Translation
 end
 
 function Bible:GetVerse<Default>(BookId, ChapterNum, Verse: number, TranslationId: TranslationId?): verse
-	local Verses: verses = Bible:GetVerses(BookId, ChapterNum)
+	local Verses: verses = Bible:GetVerses(BookId, ChapterNum, TranslationId)
 	return Verses[Verse]
 end
 
