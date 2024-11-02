@@ -1,4 +1,4 @@
-# LuaU-Bible-API
+# Roblox helloao bible API wrapper
 Advanced wrapper for helloao.org bible API complete with full type checking! ✝️
 
 Orignal API [documentation](https://bible.helloao.org/docs/guide/)
